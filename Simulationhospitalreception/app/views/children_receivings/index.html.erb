@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recepcion de ninos en un hospital</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <div class="form-group">
+    <%= label_tag :sex_sel, 'Genero' %>
+    <%= select_tag :sex_sel, options_for_select(["Masculino", "Femenino"]), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :message, "Enfermedades que padece o ha padecido:" %>
+    <p><%= text_area_tag(:message,"", size: "24x6", class: 'form-control') %></p>
+  </div>
+
+
+  <div>
+    <%= label_tag(:newsletter, "Alguna vez ha padecido desnutricion?") %>
+    <%= label_tag :newsletter_accept_yes, "Si" %>
+    <%= radio_button_tag(:newsletter_accept, "yes") %>
+
+    <%= label_tag :newsletter_accept_no, "No" %>
+    <%= radio_button_tag(:newsletter_accept, "no") %>
+  </div>
+
+
+
+  <%= form_tag("/accept-terms", method: "post", class: "nifty_form") do %>
+   <div>
+    <%= label_tag(:terms_conditions, "Desea aceptar los terminos y condiciones?") %>
+    <%= check_box_tag(:terms_conditions) %>
+    </div>
+  
+  <div>
+    <%= label_tag(:newsletter, "Desea recibir notificaciones semanales?") %>
+    <%= label_tag :newsletter_accept_yes, "Si" %>
+    <%= radio_button_tag(:newsletter_accept, "yes") %>
+
+    <%= label_tag :newsletter_accept_no, "No" %>
+    <%= radio_button_tag(:newsletter_accept, "no") %>
+  </div>
+  
+  <%= submit_tag("Enviar formulario") %>
+<% end %>
+        
+
+
+
+  <tbody>
+    <% @children_receivings.each do |children_receiving| %>
+      <tr>
+        <td><%= link_to 'Show', children_receiving %></td>
+        <td><%= link_to 'Edit', edit_children_receiving_path(children_receiving) %></td>
+        <td><%= link_to 'Destroy', children_receiving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo nino para tratamiento', new_children_receiving_path %>
