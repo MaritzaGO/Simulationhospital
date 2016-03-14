@@ -9,6 +9,40 @@
     </tr>
   </thead>
 
+
+<%= form_tag({controller: :children_receivings, action: :index}, method: :put) do %>
+
+<div class="form-group">
+            <%= label_tag :name, 'Primer nombre' %>
+            <%= text_field_tag :name,"", placeholder: 'digite su primer nombre', class: "form-control" %>
+          </div>
+
+
+<div class="form-group">
+            <%= label_tag :name, 'Segundo nombre' %>
+            <%= text_field_tag :name, "", placeholder: 'digite su segundo nombre', class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag :lastname, 'Primer apellido' %>
+            <%= text_field_tag :lastname, "", placeholder: 'digite su primer apellido', class: "form-control" %>
+          </div>
+
+<div class="form-group">
+            <%= label_tag :name, 'Segundo apellido' %>
+            <%= text_field_tag :name, "", placeholder: 'digite su segundo apellido', class: "form-control" %>
+          </div>
+
+  <div class="form-group">
+          <%= label_tag :birthday, 'Fecha de nacimiento' %>
+          <%= date_select :birthday, "birthday",start_year: 1920, end_year: 2016,class: "form-control" %>
+  </div>
+
+<div class="form-group">
+            <%= label_tag :email, 'E-mail' %>
+            <%= text_field_tag :email, "", placeholder: 'digite correo electronico de contacto', size: "40x40", class: "form-control" %>
+          </div>
+
   <div class="form-group">
     <%= label_tag :sex_sel, 'Genero' %>
     <%= select_tag :sex_sel, options_for_select(["Masculino", "Femenino"]), class: "form-control" %>
@@ -46,7 +80,15 @@
     <%= radio_button_tag(:newsletter_accept, "no") %>
   </div>
   
-  <%= submit_tag("Enviar formulario") %>
+
+  <div class="form-group">
+  <%= submit_tag "Enviar formulario", class: "btn btn-success" %>
+  <button class="btn btn-danger">Cancelar</button>
+  </div>
+
+<% end %>
+
+
 <% end %>
         
 
